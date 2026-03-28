@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Concierge - FIRE Wizard Final Step</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f2f4f7",
+              "surface-bright": "#f7f9fc",
+              "primary-fixed-dim": "#94d3c1",
+              "on-tertiary-container": "#e89f8c",
+              "secondary": "#4c56af",
+              "on-surface-variant": "#3f4945",
+              "primary-fixed": "#afefdd",
+              "on-secondary-container": "#27308a",
+              "error-container": "#ffdad6",
+              "primary-container": "#004d40",
+              "primary": "#00342b",
+              "on-secondary-fixed": "#000767",
+              "error": "#ba1a1a",
+              "surface": "#f7f9fc",
+              "on-surface": "#191c1e",
+              "on-primary-container": "#7ebdac",
+              "on-secondary": "#ffffff",
+              "secondary-fixed": "#e0e0ff",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#bdc2ff",
+              "inverse-primary": "#94d3c1",
+              "surface-container-high": "#e6e8eb",
+              "inverse-surface": "#2d3133",
+              "tertiary": "#4e2013",
+              "on-primary-fixed": "#00201a",
+              "background": "#f7f9fc",
+              "surface-container-highest": "#e0e3e6",
+              "surface-tint": "#29695b",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#343d96",
+              "on-tertiary-fixed": "#370e04",
+              "on-tertiary-fixed-variant": "#6d382a",
+              "on-primary-fixed-variant": "#065043",
+              "tertiary-container": "#693527",
+              "outline": "#707975",
+              "secondary-container": "#959efd",
+              "inverse-on-surface": "#eff1f4",
+              "surface-dim": "#d8dadd",
+              "surface-container": "#eceef1",
+              "outline-variant": "#bfc9c4",
+              "tertiary-fixed-dim": "#ffb5a1",
+              "surface-variant": "#e0e3e6",
+              "on-background": "#191c1e",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#ffdbd1",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .signature-gradient {
+        background: linear-gradient(135deg, #00342b 0%, #004d40 100%);
+      }
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+      }
+      /* Custom radio/checkbox to hide default and use cards */
+      .choice-chip:checked + label {
+        background-color: #00342b;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0, 52, 43, 0.2);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar (Supressed for focus, but using style guide for a minimalist header) -->
+<header class="fixed top-0 w-full z-50 glass-effect">
+<div class="flex items-center justify-between px-6 py-4 max-w-4xl mx-auto">
+<div class="text-xl font-bold tracking-tight text-teal-950 font-headline">Concierge</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-label text-on-surface-variant uppercase tracking-widest">Step 4 of 4</span>
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full signature-gradient w-full"></div>
+</div>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-[1px] w-full absolute bottom-0"></div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-4">
+<div class="w-full max-w-2xl">
+<!-- Header Editorial Content -->
+<section class="mb-12 text-center">
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-4">
+                    Final preferences
+                </h1>
+<p class="text-on-surface-variant text-lg max-w-md mx-auto">
+                    Fine-tune your Concierge experience to match your risk appetite and communication style.
+                </p>
+</section>
+<!-- Onboarding Form Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-10 shadow-sm border border-transparent">
+<form class="space-y-10">
+<!-- Risk Profile Selection -->
+<div class="space-y-4">
+<label class="font-headline text-sm font-bold text-on-surface-variant uppercase tracking-widest block">Risk Profile</label>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Choice Card: Conservative -->
+<div>
+<input class="hidden choice-chip" id="risk-conservative" name="risk" type="radio" value="conservative"/>
+<label class="flex flex-col p-5 rounded-xl bg-surface-container-low border border-transparent cursor-pointer transition-all hover:border-primary-fixed-dim" for="risk-conservative">
+<span class="material-symbols-outlined text-secondary mb-3">shield</span>
+<span class="font-headline font-bold text-lg mb-1">Conservative</span>
+<span class="text-xs text-on-surface-variant">Focus on capital preservation and steady returns.</span>
+</label>
+</div>
+<!-- Choice Card: Moderate -->
+<div>
+<input checked="" class="hidden choice-chip" id="risk-moderate" name="risk" type="radio" value="moderate"/>
+<label class="flex flex-col p-5 rounded-xl bg-surface-container-low border border-transparent cursor-pointer transition-all hover:border-primary-fixed-dim" for="risk-moderate">
+<span class="material-symbols-outlined text-secondary mb-3">balance</span>
+<span class="font-headline font-bold text-lg mb-1">Moderate</span>
+<span class="text-xs text-on-surface-variant">Balanced approach between growth and stability.</span>
+</label>
+</div>
+<!-- Choice Card: Aggressive -->
+<div>
+<input class="hidden choice-chip" id="risk-aggressive" name="risk" type="radio" value="aggressive"/>
+<label class="flex flex-col p-5 rounded-xl bg-surface-container-low border border-transparent cursor-pointer transition-all hover:border-primary-fixed-dim" for="risk-aggressive">
+<span class="material-symbols-outlined text-secondary mb-3">trending_up</span>
+<span class="font-headline font-bold text-lg mb-1">Aggressive</span>
+<span class="text-xs text-on-surface-variant">Maximize long-term growth with higher volatility.</span>
+</label>
+</div>
+</div>
+</div>
+<!-- Language Preference Selection -->
+<div class="space-y-4">
+<label class="font-headline text-sm font-bold text-on-surface-variant uppercase tracking-widest block" for="language">Language preference</label>
+<div class="relative">
+<select class="w-full bg-surface-container-low border-0 border-b-2 border-surface-container-highest focus:ring-0 focus:border-primary px-4 py-4 rounded-t-lg font-body text-on-surface appearance-none transition-colors" id="language">
+<option value="english">English</option>
+<option value="hindi">Hindi</option>
+<option value="hinglish">Hinglish</option>
+</select>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant italic">The AI Mentor will interact with you in this selected language.</p>
+</div>
+<!-- Navigation Actions -->
+<div class="flex flex-col md:flex-row items-center justify-between pt-8 gap-4">
+<button class="order-2 md:order-1 flex items-center gap-2 px-8 py-3 text-secondary font-headline font-bold hover:opacity-80 transition-opacity active:scale-95 duration-200" type="button" onclick="window.location.href='/app/thirdstep.html'">
+<span class="material-symbols-outlined">arrow_back</span>
+                            Back
+                        </button>
+<button class="order-1 md:order-2 w-full md:w-auto px-10 py-4 signature-gradient text-on-primary rounded-full font-headline font-extrabold text-lg shadow-lg active:scale-95 transition-all duration-200 flex items-center justify-center gap-3" type="button" onclick="saveStep4()">
+                            Generate Plan
+                            <span class="material-symbols-outlined">magic_button</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Contextual Note -->
+<div class="mt-12 p-6 rounded-xl bg-surface-container-high/40 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary-container">info</span>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                    By clicking "Generate Plan", our AI engine will analyze your inputs across all 4 steps to create a hyper-personalized FIRE roadmap, including asset allocation and monthly targets.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer (Minimal for onboarding flow) -->
+<footer class="w-full py-8 px-6 mt-auto border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 max-w-7xl mx-auto">
+<p class="font-label text-xs text-slate-500">© 2024 Modern Concierge Finance</p>
+<div class="flex gap-6">
+<a class="font-label text-xs text-slate-500 hover:text-teal-600 transition-colors" href="#">Privacy</a>
+<a class="font-label text-xs text-slate-500 hover:text-teal-600 transition-colors" href="#">Terms</a>
+<a class="font-label text-xs text-slate-500 hover:text-teal-600 transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const data = JSON.parse(localStorage.getItem('fireData') || '{}');
+  if (data.risk_profile) {
+    document.querySelector(`input[value="${data.risk_profile}"]`).checked = true;
+  }
+  if (data.language) document.getElementById('language').value = data.language;
+});
+function saveStep4() {
+  const risk = document.querySelector('input[name="risk"]:checked')?.value || 'moderate';
+  const lang = document.getElementById('language').value || 'english';
+  const data = JSON.parse(localStorage.getItem('fireData') || '{}');
+  data.risk_profile = risk;
+  data.language = lang;
+  localStorage.setItem('fireData', JSON.stringify(data));
+  window.location.href = '/app/fire_plan.html';
+}
+</script>
+</body></html>

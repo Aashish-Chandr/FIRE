@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The FIRE Wizard | Concierge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00342b",
+                        "on-secondary-fixed": "#000767",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#959efd",
+                        "primary-fixed-dim": "#94d3c1",
+                        "on-primary-fixed": "#00201a",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6d382a",
+                        "surface": "#f7f9fc",
+                        "surface-container": "#eceef1",
+                        "secondary-fixed": "#e0e0ff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#d8dadd",
+                        "surface-container-highest": "#e0e3e6",
+                        "on-primary-fixed-variant": "#065043",
+                        "on-tertiary-container": "#e89f8c",
+                        "on-secondary-fixed-variant": "#343d96",
+                        "tertiary-fixed": "#ffdbd1",
+                        "primary-container": "#004d40",
+                        "outline": "#707975",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#4c56af",
+                        "surface-container-high": "#e6e8eb",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "tertiary-container": "#693527",
+                        "surface-container-low": "#f2f4f7",
+                        "primary-fixed": "#afefdd",
+                        "on-secondary-container": "#27308a",
+                        "tertiary": "#4e2013",
+                        "background": "#f7f9fc",
+                        "surface-bright": "#f7f9fc",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "on-primary-container": "#7ebdac",
+                        "outline-variant": "#bfc9c4",
+                        "surface-variant": "#e0e3e6",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#29695b",
+                        "inverse-on-surface": "#eff1f4",
+                        "tertiary-fixed-dim": "#ffb5a1",
+                        "on-tertiary-fixed": "#370e04",
+                        "on-surface-variant": "#3f4945",
+                        "inverse-primary": "#94d3c1",
+                        "secondary-fixed-dim": "#bdc2ff"
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .signature-gradient {
+            background: linear-gradient(135deg, #00342b 0%, #004d40 100%);
+        }
+        .step-transition {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Suppressed because it's a linear task/onboarding flow) -->
+<!-- We prioritize the content canvas per shell visibility rules -->
+<main class="flex-grow flex items-center justify-center p-4 md:p-8">
+<div class="max-w-2xl w-full">
+<!-- Branding & Header -->
+<div class="text-center mb-10">
+<h1 class="font-headline text-3xl md:text-4xl font-extrabold tracking-tight text-primary mb-2">The FIRE Wizard</h1>
+<p class="text-on-surface-variant font-medium">Your journey to Financial Independence starts here.</p>
+</div>
+<!-- Wizard Container -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col">
+<!-- Progress Header -->
+<div class="bg-surface-container-low px-8 pt-8 pb-4">
+<div class="flex justify-between items-end mb-3">
+<span class="font-label text-xs uppercase tracking-widest text-primary font-bold">Step 02 of 04</span>
+<span class="font-label text-xs font-semibold text-on-surface-variant">50% Complete</span>
+</div>
+<!-- Progress Bar Component -->
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full signature-gradient w-1/2 rounded-full"></div>
+</div>
+</div>
+<!-- Form Content -->
+<form class="p-8 space-y-8">
+<!-- Step 2 Active: Income & Expenses Section (Example) -->
+<div class="step-transition">
+<div class="mb-8">
+<h2 class="font-headline text-xl font-bold text-primary mb-1">Financial vitals</h2>
+<p class="text-sm text-on-surface-variant">We use this to calculate your monthly surplus and retirement runway.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Monthly Income Input -->
+<div class="space-y-2">
+<label class="font-label text-sm font-medium text-on-surface-variant block">Monthly Income (₹)</label>
+<div class="relative group">
+<input id="monthly_income" class="placeholder:text-sm rounded-full px-4 border-2 w-full bg-transparent border-b-2 border-surface-container-highest focus:border-primary outline-none py-3 text-lg font-semibold transition-colors appearance-none" placeholder="0" type="number" />
+
+</div>
+</div>
+<!-- Monthly Expenses Input -->
+<div class="space-y-2">
+<label class="font-label text-sm font-medium text-on-surface-variant block">Monthly Expenses (₹)</label>
+<div class="relative group">
+<input id="monthly_expenses" class="placeholder:text-sm rounded-full px-4 border-2 w-full bg-transparent border-b-2 border-surface-container-highest focus:border-primary outline-none py-3 text-lg font-semibold transition-colors appearance-none" placeholder="0" type="number" />
+
+</div>
+</div>
+<!-- Current Savings -->
+<div class="space-y-2">
+<label class="font-label text-sm font-medium text-on-surface-variant block">Current Savings (₹)</label>
+<div class="relative group">
+<input id="current_savings" class="placeholder:text-sm rounded-full px-4 border-2 w-full bg-transparent border-b-2 border-surface-container-highest focus:border-primary outline-none py-3 text-lg font-semibold transition-colors appearance-none"  placeholder="Liquidity in Bank" type="number"/>
+</div>
+</div>
+<!-- Existing Investments -->
+<div class="space-y-2">
+<label class="font-label text-sm font-medium text-on-surface-variant block">Existing Investments (₹)</label>
+<div class="relative group">
+<input id="existing_investments" class="placeholder:text-sm rounded-full px-4 border-2 w-full bg-transparent border-b-2 border-surface-container-highest focus:border-primary outline-none py-3 text-lg font-semibold transition-colors appearance-none" placeholder="Stocks, Mutual Funds, FD" type="number"/>
+</div>
+</div>
+</div>
+<!-- Dropdown Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-10">
+<!-- Risk Profile Selection -->
+<div class="space-y-3">
+<label class="font-label text-sm font-medium text-on-surface-variant block">Risk Profile</label>
+<div class="flex flex-wrap gap-2" id="risk-buttons">
+<button class="px-4 py-2 rounded-full border border-outline-variant/30 text-sm font-medium hover:bg-surface-container-high transition-colors risk-btn" data-value="conservative" type="button">Conservative</button>
+<button class="px-4 py-2 rounded-full signature-gradient text-on-primary text-sm font-medium shadow-md risk-btn active-risk" data-value="moderate" type="button">Moderate</button>
+<button class="px-4 py-2 rounded-full border border-outline-variant/30 text-sm font-medium hover:bg-surface-container-high transition-colors risk-btn" data-value="aggressive" type="button">Aggressive</button>
+</div>
+<input type="hidden" id="risk_profile" value="moderate"/>
+</div>
+<!-- Language Preference -->
+<div class="space-y-2">
+<label class="font-label text-sm font-medium text-on-surface-variant block">Language preference</label>
+<select id="language" class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-primary/20 appearance-none">
+<option value="english">English</option>
+<option value="hindi">Hindi</option>
+<option value="hinglish">Hinglish</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Navigation Actions -->
+<div class="pt-8 flex items-center justify-between border-t border-surface-container">
+<button class="flex items-center gap-2 text-secondary font-semibold hover:opacity-80 transition-opacity" type="button" onclick="sessionStorage.setItem('wizardPreserveSteps2to4','1'); window.location.href='/app/firststep_page.html'">
+<span class="material-symbols-outlined text-lg" data-icon="arrow_back">arrow_back</span>
+                            Back
+                        </button>
+<div class="flex gap-4">
+<!-- Secondary Action (Skip) -->
+
+<!-- Primary Action (Next/Submit) -->
+<!-- Note: Simulating the 'Submit' state with a loading spinner as requested -->
+<button class="signature-gradient text-on-primary px-10 py-3 rounded-full font-bold flex items-center gap-3 shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all" type="button" onclick="saveStep2()">
+<span>Continue</span>
+<div class="hidden"> <!-- Hidden for demo, would show on final step -->
+<svg class="animate-spin h-5 w-5 text-white" fill="none" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+<path class="opacity-75" d="4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</form>
+</div>
+<!-- Editorial Feature Bento (Contextual Value Add) -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="md:col-span-2 bg-primary-container p-6 rounded-xl flex items-center gap-6 overflow-hidden relative">
+<div class="flex-1 z-10">
+<h4 class="font-headline text-on-primary-container text-lg font-bold mb-2">Why this matters?</h4>
+<p class="text-on-primary-container/80 text-sm leading-relaxed">Precision in these figures allows the Concierge AI to model 45,000+ market scenarios specifically for your Indian tax bracket.</p>
+</div>
+<div class="hidden md:block w-32 h-32 opacity-20">
+<img class="w-full h-full object-cover rounded-lg" data-alt="abstract geometric pattern representing financial growth with upward arrows and leaf-like structures in deep green tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcODR5pKtVCw9twO-vUuLCCUG3my8KS0Td65FJBuYAe3ALfjKlDFB19QJ4LrXEFwYzurgdRjpOE-giopu5ymyzLwUBSdQiY72nUvnsDYzlS01Fkz83GwHMW5eVlgmNphRHbEOi4v415_2JQGfuZaDmVRq9HLAijElJ3nYorcFuNMXjJQ5_9-JpdNeLF1OySUv_NdyYSuI3XtqHGfh6Sz-Nse4JMJIcNMl3vvqzt3zgZH0Sayx9E7uY1_OkBKpeE3GPeA20yJbIyl_e"/>
+</div>
+</div>
+<div class="bg-surface-container-high p-6 rounded-xl flex flex-col justify-center">
+<span class="material-symbols-outlined text-primary text-3xl mb-3" data-icon="lock" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lock</span>
+<h4 class="font-headline text-primary font-bold text-sm">Bank-Grade Security</h4>
+<p class="text-xs text-on-surface-variant mt-1">AES-256 encryption. Your data is private and never shared.</p>
+</div>
+</div>
+<!-- Help Support (Suppressed Shell Link Alternative) -->
+<div class="mt-8 text-center">
+<p class="text-xs text-on-surface-variant">Confused about a term? <a class="text-secondary font-semibold hover:underline" href="#">Ask the AI Mentor</a></p>
+</div>
+</div>
+</main>
+<!-- Footer (Minimal for onboarding focus) -->
+<footer class="w-full py-8 px-6 mt-auto border-t border-surface-container">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 text-xs font-label">
+<span class="text-on-surface-variant">© 2024 Modern Concierge Finance</span>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Help Center</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">Security</a>
+</div>
+</div>
+</footer>
+<script>
+// Restore saved values on load
+window.addEventListener('DOMContentLoaded', () => {
+  const data = JSON.parse(localStorage.getItem('fireData') || '{}');
+  if (data.monthly_income) document.getElementById('monthly_income').value = data.monthly_income;
+  if (data.monthly_expenses) document.getElementById('monthly_expenses').value = data.monthly_expenses;
+  if (data.current_savings) document.getElementById('current_savings').value = data.current_savings;
+  if (data.existing_investments) document.getElementById('existing_investments').value = data.existing_investments;
+  if (data.risk_profile) {
+    document.getElementById('risk_profile').value = data.risk_profile;
+    document.querySelectorAll('.risk-btn').forEach(btn => {
+      btn.classList.toggle('signature-gradient', btn.dataset.value === data.risk_profile);
+      btn.classList.toggle('text-on-primary', btn.dataset.value === data.risk_profile);
+      btn.classList.toggle('border', btn.dataset.value !== data.risk_profile);
+    });
+  }
+  if (data.language) document.getElementById('language').value = data.language;
+
+  // Risk button toggle
+  document.querySelectorAll('.risk-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.risk-btn').forEach(b => {
+        b.classList.remove('signature-gradient','text-on-primary','shadow-md');
+        b.classList.add('border','border-outline-variant/30');
+      });
+      btn.classList.add('signature-gradient','text-on-primary','shadow-md');
+      btn.classList.remove('border','border-outline-variant/30');
+      document.getElementById('risk_profile').value = btn.dataset.value;
+    });
+  });
+});
+
+function showErr(id, msg) {
+  let el = document.getElementById(id);
+  if (!el) {
+    el = document.createElement('p');
+    el.id = id;
+    el.className = 'text-xs text-red-500 mt-1 ml-2';
+    document.getElementById(id.replace('-error','')).parentNode.appendChild(el);
+  }
+  el.textContent = msg;
+  el.classList.remove('hidden');
+}
+function clearErr(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.add('hidden');
+}
+
+function saveStep2() {
+  const income = parseFloat(document.getElementById('monthly_income').value);
+  const expenses = parseFloat(document.getElementById('monthly_expenses').value);
+  const savings = parseFloat(document.getElementById('current_savings').value) || 0;
+  const investments = parseFloat(document.getElementById('existing_investments').value) || 0;
+  let valid = true;
+
+  clearErr('monthly_income-error'); clearErr('monthly_expenses-error');
+
+  if (!income || income <= 0) { showErr('monthly_income-error', 'Please enter your monthly income.'); valid = false; }
+  if (!expenses || expenses <= 0) { showErr('monthly_expenses-error', 'Please enter your monthly expenses.'); valid = false; }
+  if (valid && expenses >= income) { showErr('monthly_expenses-error', 'Expenses must be less than income.'); valid = false; }
+  if (!valid) return;
+
+  const data = JSON.parse(localStorage.getItem('fireData') || '{}');
+  data.monthly_income = income;
+  data.monthly_expenses = expenses;
+  data.current_savings = savings;
+  data.existing_investments = investments;
+  data.risk_profile = document.getElementById('risk_profile').value || 'moderate';
+  data.language = document.getElementById('language').value || 'english';
+  localStorage.setItem('fireData', JSON.stringify(data));
+  window.location.href = '/app/thirdstep.html';
+}
+</script>
+</body></html>

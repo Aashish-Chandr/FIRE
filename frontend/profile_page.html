@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profile | Concierge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#00342b", "primary-container": "#004d40", "on-primary": "#ffffff",
+        "primary-fixed": "#afefdd", "primary-fixed-dim": "#94d3c1", "on-primary-fixed": "#00201a",
+        "on-primary-container": "#7ebdac", "secondary": "#4c56af", "on-secondary": "#ffffff",
+        "secondary-container": "#959efd", "on-secondary-container": "#27308a",
+        "surface": "#f7f9fc", "surface-container": "#eceef1", "surface-container-low": "#f2f4f7",
+        "surface-container-lowest": "#ffffff", "surface-container-high": "#e6e8eb",
+        "surface-container-highest": "#e0e3e6", "on-surface": "#191c1e",
+        "on-surface-variant": "#3f4945", "outline": "#707975", "outline-variant": "#bfc9c4",
+        "error": "#ba1a1a", "error-container": "#ffdad6",
+      },
+      fontFamily: { "headline": ["Manrope"], "body": ["Inter"] },
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+    },
+  },
+}
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  .signature-gradient { background: linear-gradient(135deg, #00342b 0%, #004d40 100%); }
+  body { font-family: 'Inter', sans-serif; }
+  h1,h2,h3 { font-family: 'Manrope', sans-serif; }
+</style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-sm">
+  <div class="flex justify-between items-center px-6 h-16 max-w-screen-md mx-auto">
+    <span class="text-xl font-extrabold tracking-tighter text-primary font-headline">Concierge</span>
+  </div>
+</nav>
+
+<!-- Main -->
+<main class="pt-20 pb-32 px-6 max-w-screen-md mx-auto space-y-6">
+
+  <!-- Profile Header — avatar initials, no photo -->
+  <section class="flex items-center gap-5 pt-4">
+    <div id="avatar-circle" class="w-20 h-20 rounded-3xl signature-gradient flex items-center justify-center text-white text-3xl font-extrabold font-headline shadow-lg shrink-0">
+      A
+    </div>
+    <div>
+      <span class="text-secondary font-semibold tracking-wider text-xs uppercase">Member</span>
+      <h1 id="profile-name" class="text-3xl font-extrabold tracking-tight text-primary leading-tight mt-0.5">--</h1>
+      <p id="profile-meta" class="text-sm text-on-surface-variant mt-1">-- · India</p>
+    </div>
+  </section>
+
+  <!-- Quick stats grid -->
+  <div class="grid grid-cols-2 gap-4">
+    <div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm">
+      <span class="material-symbols-outlined text-secondary text-2xl">monitoring</span>
+      <p class="text-xs text-on-surface-variant uppercase tracking-widest mt-2 mb-1">Risk Profile</p>
+      <p id="profile-risk" class="font-bold text-primary capitalize">--</p>
+    </div>
+    <div class="bg-surface-container-low rounded-xl p-5">
+      <span class="material-symbols-outlined text-primary text-2xl">language</span>
+      <p class="text-xs text-on-surface-variant uppercase tracking-widest mt-2 mb-1">Language</p>
+      <p id="profile-lang" class="font-bold text-primary capitalize">--</p>
+    </div>
+  </div>
+
+  <!-- FIRE Plan Status -->
+  <section class="signature-gradient p-7 rounded-3xl text-white shadow-xl relative overflow-hidden">
+    <div class="relative z-10">
+      <div class="flex justify-between items-start mb-5">
+        <div>
+          <h2 class="text-xl font-bold">My FIRE Plan</h2>
+          <p class="text-sm opacity-80 mt-0.5">Progress towards early retirement</p>
+        </div>
+        <span id="fire-pct" class="text-3xl font-extrabold text-primary-fixed">--%</span>
+      </div>
+      <div class="w-full bg-white/20 h-2.5 rounded-full overflow-hidden mb-5">
+        <div id="fire-bar" class="bg-primary-fixed h-full rounded-full transition-all duration-700" style="width:0%"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl">
+          <p class="text-[10px] uppercase tracking-widest text-primary-fixed-dim font-bold mb-1">Target FIRE Age</p>
+          <p id="fire-age" class="text-lg font-bold">--</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl">
+          <p class="text-[10px] uppercase tracking-widest text-primary-fixed-dim font-bold mb-1">Corpus Target</p>
+          <p id="fire-corpus" class="text-lg font-bold">--</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl">
+          <p class="text-[10px] uppercase tracking-widest text-primary-fixed-dim font-bold mb-1">Monthly SIP</p>
+          <p id="fire-sip" class="text-lg font-bold">--</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl">
+          <p class="text-[10px] uppercase tracking-widest text-primary-fixed-dim font-bold mb-1">FIRE Style</p>
+          <p id="fire-type" class="text-lg font-bold">--</p>
+        </div>
+      </div>
+    </div>
+    <div class="absolute -top-12 -right-12 w-48 h-48 bg-emerald-400/10 rounded-full blur-3xl"></div>
+  </section>
+
+  <!-- Quick Navigation -->
+  <section class="space-y-3">
+    <h3 class="text-lg font-extrabold text-primary">Quick Access</h3>
+    <a href="/app/firststep_page.html" class="bg-surface-container-lowest rounded-2xl p-5 flex items-center justify-between hover:bg-white transition-colors cursor-pointer shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary">edit_note</span>
+        </div>
+        <div>
+          <p class="font-bold text-on-surface">New FIRE Plan</p>
+          <p class="text-xs text-on-surface-variant">Start a fresh analysis</p>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+    </a>
+    <a href="/app/fire_plan.html" class="bg-surface-container-lowest rounded-2xl p-5 flex items-center justify-between hover:bg-white transition-colors cursor-pointer shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 bg-secondary/10 rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-secondary">dashboard</span>
+        </div>
+        <div>
+          <p class="font-bold text-on-surface">View Dashboard</p>
+          <p class="text-xs text-on-surface-variant">See your FIRE roadmap & results</p>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+    </a>
+    <a href="/app/ai_mentor.html" class="bg-surface-container-lowest rounded-2xl p-5 flex items-center justify-between hover:bg-white transition-colors cursor-pointer shadow-sm">
+      <div class="flex items-center gap-4">
+        <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined text-primary">smart_toy</span>
+        </div>
+        <div>
+          <p class="font-bold text-on-surface">AI Mentor</p>
+          <p class="text-xs text-on-surface-variant">Chat with your financial advisor</p>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-outline-variant">chevron_right</span>
+    </a>
+  </section>
+
+  <!-- Sign Out -->
+  <button onclick="signOut()" class="w-full py-4 text-error font-bold flex items-center justify-center gap-2 bg-error-container/30 rounded-2xl active:scale-95 transition-transform hover:bg-error-container/50">
+    <span class="material-symbols-outlined">logout</span>
+    Sign Out
+  </button>
+
+</main>
+
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-white/90 backdrop-blur-xl z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.05)]">
+  <a href="/app/firststep_page.html" class="flex flex-col items-center text-slate-400 px-5 py-2 active:scale-90 transition-transform">
+    <span class="material-symbols-outlined">analytics</span>
+    <span class="text-[11px] font-medium uppercase tracking-wide mt-1">New Plan</span>
+  </a>
+  <a href="/app/fire_plan.html" class="flex flex-col items-center text-slate-400 px-5 py-2 active:scale-90 transition-transform">
+    <span class="material-symbols-outlined">dashboard</span>
+    <span class="text-[11px] font-medium uppercase tracking-wide mt-1">Results</span>
+  </a>
+  <a href="/app/ai_mentor.html" class="flex flex-col items-center text-slate-400 px-5 py-2 active:scale-90 transition-transform">
+    <span class="material-symbols-outlined">forum</span>
+    <span class="text-[11px] font-medium uppercase tracking-wide mt-1">Mentor</span>
+  </a>
+  <div class="flex flex-col items-center bg-emerald-100 text-emerald-900 rounded-2xl px-5 py-2">
+    <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">person</span>
+    <span class="text-[11px] font-medium uppercase tracking-wide mt-1">Profile</span>
+  </div>
+</nav>
+
+<script>
+const fmt = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+const toCr = v => (v / 10000000).toFixed(2);
+
+window.addEventListener('DOMContentLoaded', () => {
+  const fd = JSON.parse(localStorage.getItem('fireData') || '{}');
+  const cached = JSON.parse(sessionStorage.getItem('firePlanCache') || '{}');
+  const r = cached.results || {};
+
+  // Header
+  if (fd.name) {
+    document.getElementById('profile-name').textContent = fd.name;
+    document.getElementById('avatar-circle').textContent = fd.name.charAt(0).toUpperCase();
+  }
+  const age = fd.age ? fd.age + ' Years' : '--';
+  document.getElementById('profile-meta').textContent = age + ' · India';
+  document.getElementById('profile-risk').textContent = fd.risk_profile || '--';
+  document.getElementById('profile-lang').textContent = fd.language || '--';
+
+  // FIRE stats from cached plan
+  if (r.fire_corpus_range) {
+    const yearsToFire = r.years_to_fire || 0;
+    const currentAge = fd.age || 0;
+    const fireAge = currentAge + yearsToFire;
+    const pct = yearsToFire > 0 ? Math.min(Math.round((1 - yearsToFire / 40) * 100), 99) : 0;
+
+    document.getElementById('fire-pct').textContent = pct + '%';
+    document.getElementById('fire-bar').style.width = pct + '%';
+    document.getElementById('fire-age').textContent = 'Age ' + fireAge;
+    document.getElementById('fire-corpus').textContent = '₹' + toCr(r.fire_corpus_range.min) + ' Cr';
+    document.getElementById('fire-sip').textContent = fmt.format(r.monthly_sip_range.min);
+    document.getElementById('fire-type').textContent = r.fire_type || '--';
+  }
+});
+
+function signOut() {
+  localStorage.clear();
+  sessionStorage.clear();
+  window.location.href = '/';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>FIRE Wizard - The Modern Concierge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f2f4f7",
+              "surface-bright": "#f7f9fc",
+              "primary-fixed-dim": "#94d3c1",
+              "on-tertiary-container": "#e89f8c",
+              "secondary": "#4c56af",
+              "on-surface-variant": "#3f4945",
+              "primary-fixed": "#afefdd",
+              "on-secondary-container": "#27308a",
+              "error-container": "#ffdad6",
+              "primary-container": "#004d40",
+              "primary": "#00342b",
+              "on-secondary-fixed": "#000767",
+              "error": "#ba1a1a",
+              "surface": "#f7f9fc",
+              "on-surface": "#191c1e",
+              "on-primary-container": "#7ebdac",
+              "on-secondary": "#ffffff",
+              "secondary-fixed": "#e0e0ff",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#bdc2ff",
+              "inverse-primary": "#94d3c1",
+              "surface-container-high": "#e6e8eb",
+              "inverse-surface": "#2d3133",
+              "tertiary": "#4e2013",
+              "on-primary-fixed": "#00201a",
+              "background": "#f7f9fc",
+              "surface-container-highest": "#e0e3e6",
+              "surface-tint": "#29695b",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#343d96",
+              "on-tertiary-fixed": "#370e04",
+              "on-tertiary-fixed-variant": "#6d382a",
+              "on-primary-fixed-variant": "#065043",
+              "tertiary-container": "#693527",
+              "outline": "#707975",
+              "secondary-container": "#959efd",
+              "inverse-on-surface": "#eff1f4",
+              "surface-dim": "#d8dadd",
+              "surface-container": "#eceef1",
+              "outline-variant": "#bfc9c4",
+              "tertiary-fixed-dim": "#ffb5a1",
+              "surface-variant": "#e0e3e6",
+              "on-background": "#191c1e",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#ffdbd1",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .signature-gradient {
+        background: linear-gradient(135deg, #00342b 0%, #004d40 100%);
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar Navigation (Suppressed based on Transactional Flow, but Brand Anchor remains) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto font-['Manrope'] antialiased">
+<div class="text-xl font-bold tracking-tight text-teal-950 dark:text-teal-100 uppercase">
+                Concierge
+            </div>
+<div class="flex items-center gap-4">
+<span class="text-slate-500 text-sm font-medium">Step 1 of 4</span>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-[1px] w-full absolute bottom-0"></div>
+</header>
+<main class="flex-grow flex items-center justify-center px-4 pt-24 pb-12">
+<div class="max-w-4xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<!-- Hero Content / Branding -->
+<div class="md:col-span-5 space-y-6">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant text-xs font-bold tracking-widest uppercase font-headline">
+                    Financial Independence
+                </div>
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold text-primary leading-tight tracking-tight">
+                    Let's start with the basics
+                </h1>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-sm">
+                    Your journey to early retirement begins with understanding where you stand today.
+                </p>
+<!-- Visual Anchor -->
+<div class="relative w-full aspect-square max-w-[280px] hidden md:block">
+<div class="absolute inset-0 signature-gradient opacity-10 blur-3xl rounded-full"></div>
+<img alt="Financial Planning" class="relative z-10 w-full h-full object-cover rounded-xl shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" data-alt="Minimalist architectural composition of glass and teal steel reflecting a clear blue sky with professional clean lines and sophisticated mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXvB-JhKixuhXODaA-a4ZjCMBp3SjRzsxk5JGwMJ2ZkZQxhZWM30rPGR9wPJQlN1TnZIg3M-oQreUAnNp_JYaW4WYbNVGMMiWpisb31mWkFAmzzbH6La2TSeJKBTDEV3AsFBMJKBA2QvrV6QbGPHBlgwI-jJn5-hP7JBaxn1MBpvmVGFpOYXmZU0RKCs79t4dlGryp6NAbadRe0wNKB_pM41-7xktcfFh_HMPvJFiCydl6uNQMULMDTU9lUuXmrFIyq2dbuS02qTCI"/>
+</div>
+</div>
+<!-- Onboarding Card -->
+<div class="md:col-span-7">
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 md:p-12 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative overflow-hidden">
+<!-- Progress Bar Component -->
+<div class="mb-12">
+<div class="flex justify-between items-end mb-3">
+<span class="font-headline font-bold text-primary tracking-tight">Progress</span>
+<span class="font-headline font-extrabold text-primary">25%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full signature-gradient w-[25%] transition-all duration-500 ease-out"></div>
+</div>
+</div>
+<!-- Form Content -->
+<form class="space-y-10">
+<div class="space-y-8">
+<!-- Input: Name -->
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 transition-colors group-focus-within:text-primary" for="name">
+                                    Full Name
+                                </label>
+<input class="placeholder:text-sm rounded-full px-4 border-2 w-full bg-transparent border-b-2 border-surface-container-highest focus:border-primary outline-none py-3 text-xl font-headline font-medium text-on-surface placeholder:text-surface-dim transition-all" id="name" name="name" placeholder="E.g. Arjun Mehta" type="text" required/>
+<p id="name-error" class="hidden text-xs text-red-500 mt-1 ml-2">Please enter your full name.</p>
+</div>
+<!-- Input: Age -->
+<div class="group">
+<label class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-2 transition-colors group-focus-within:text-primary" for="age">
+                                    Current Age
+                                </label>
+<input class="placeholder:text-sm rounded-full px-4 border-2 w-full bg-transparent border-b-2 border-surface-container-highest focus:border-primary outline-none py-3 text-xl font-headline font-medium text-on-surface placeholder:text-surface-dim transition-all" id="age" name="age" placeholder="32" type="number" required/>
+<p id="age-error" class="hidden text-xs text-red-500 mt-1 ml-2">Please enter a valid age (18–80).</p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-6">
+<button class="group relative w-full signature-gradient text-on-primary font-headline font-bold py-5 px-8 rounded-full flex items-center justify-center gap-3 active:scale-[0.98] transition-all shadow-lg hover:shadow-primary/20" type="button" onclick="saveStep1()">
+<span>Continue</span>
+<span class="material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</form>
+<!-- Decorative Background Element -->
+<div class="absolute -bottom-12 -right-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+<!-- Footer Support Note -->
+<div class="mt-8 flex items-center justify-center gap-4 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-primary text-base">verified_user</span>
+<span>Your data is encrypted and remains private.</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Using JSON Structure) -->
+<footer class="w-full py-12 px-6 mt-auto bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
+<div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 max-w-7xl mx-auto font-['Inter'] text-xs text-slate-600 dark:text-slate-400">
+<div class="text-slate-400 font-bold uppercase tracking-widest">
+                © 2024 Modern Concierge Finance
+            </div>
+<div class="flex gap-8">
+<a class="text-slate-500 hover:text-teal-600 transition-colors" href="#">Privacy</a>
+<a class="text-slate-500 hover:text-teal-600 transition-colors" href="#">Terms</a>
+<a class="text-slate-500 hover:text-teal-600 transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  // Always clear previous session data when landing on step 1
+  localStorage.removeItem('fireData');
+  localStorage.removeItem('fireUserId');
+  localStorage.removeItem('firePlanId');
+  sessionStorage.removeItem('chatSessionId');
+  sessionStorage.removeItem('chatHistory');
+  sessionStorage.removeItem('firePlanCache');
+});
+
+function saveStep1() {
+  const name = document.getElementById('name').value.trim();
+  const age = document.getElementById('age').value.trim();
+  let valid = true;
+
+  const nameErr = document.getElementById('name-error');
+  const ageErr = document.getElementById('age-error');
+  nameErr.classList.add('hidden');
+  ageErr.classList.add('hidden');
+
+  if (!name) { nameErr.classList.remove('hidden'); valid = false; }
+  if (!age || parseInt(age) < 18 || parseInt(age) > 80) { ageErr.classList.remove('hidden'); valid = false; }
+  if (!valid) return;
+
+  localStorage.setItem('fireData', JSON.stringify({ name, age: parseInt(age, 10) }));
+  window.location.href = '/app/fire_wizard.html';
+}
+</script>
+</body></html>

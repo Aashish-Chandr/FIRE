@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Concierge - FIRE Wizard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f2f4f7",
+              "surface-bright": "#f7f9fc",
+              "primary-fixed-dim": "#94d3c1",
+              "on-tertiary-container": "#e89f8c",
+              "secondary": "#4c56af",
+              "on-surface-variant": "#3f4945",
+              "primary-fixed": "#afefdd",
+              "on-secondary-container": "#27308a",
+              "error-container": "#ffdad6",
+              "primary-container": "#004d40",
+              "primary": "#00342b",
+              "on-secondary-fixed": "#000767",
+              "error": "#ba1a1a",
+              "surface": "#f7f9fc",
+              "on-surface": "#191c1e",
+              "on-primary-container": "#7ebdac",
+              "on-secondary": "#ffffff",
+              "secondary-fixed": "#e0e0ff",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#bdc2ff",
+              "inverse-primary": "#94d3c1",
+              "surface-container-high": "#e6e8eb",
+              "inverse-surface": "#2d3133",
+              "tertiary": "#4e2013",
+              "on-primary-fixed": "#00201a",
+              "background": "#f7f9fc",
+              "surface-container-highest": "#e0e3e6",
+              "surface-tint": "#29695b",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#343d96",
+              "on-tertiary-fixed": "#370e04",
+              "on-tertiary-fixed-variant": "#6d382a",
+              "on-primary-fixed-variant": "#065043",
+              "tertiary-container": "#693527",
+              "outline": "#707975",
+              "secondary-container": "#959efd",
+              "inverse-on-surface": "#eff1f4",
+              "surface-dim": "#d8dadd",
+              "surface-container": "#eceef1",
+              "outline-variant": "#bfc9c4",
+              "tertiary-fixed-dim": "#ffb5a1",
+              "surface-variant": "#e0e3e6",
+              "on-background": "#191c1e",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#ffdbd1",
+              "on-tertiary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .signature-gradient {
+        background: linear-gradient(135deg, #00342b 0%, #004d40 100%);
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen flex flex-col">
+<!-- Top Navigation Shell - Suppressed for focus journey per protocol but Brand Anchor applied to Header -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+<span class="text-xl font-bold tracking-tight text-teal-950 font-headline">Concierge</span>
+<div class="flex items-center gap-2">
+<span class="text-xs font-medium text-on-surface-variant uppercase tracking-widest">Step 3 of 4</span>
+</div>
+</div>
+<div class="bg-slate-100 h-[1px] w-full absolute bottom-0"></div>
+</header>
+<main class="flex-grow flex items-center justify-center px-6 pt-24 pb-12">
+<div class="w-full max-w-2xl">
+<!-- Progress Section -->
+<div class="mb-12">
+<div class="flex justify-between items-end mb-3">
+<h1 class="text-3xl md:text-4xl font-extrabold font-headline text-primary tracking-tight">Your FIRE goals</h1>
+<span class="text-primary font-bold font-headline">75%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full signature-gradient rounded-full w-[75%]"></div>
+</div>
+</div>
+<!-- Wizard Card -->
+<div class="bg-surface-container-lowest rounded-xl p-8 md:p-12 shadow-[0_8px_24px_rgba(25,28,30,0.06)] relative overflow-hidden">
+<!-- Decorative Element -->
+<div class="absolute -top-24 -right-24 w-48 h-48 bg-primary/5 rounded-full blur-3xl"></div>
+<form class="space-y-10 relative z-10">
+<div class="space-y-8">
+<!-- Target Retirement Age Field -->
+<div class="group">
+<label class="block text-sm font-semibold text-on-surface-variant mb-2 transition-colors group-focus-within:text-primary" for="retirement-age">
+                                Target Retirement Age
+                            </label>
+<div class="relative">
+<input class="w-full bg-transparent border-0 border-b-2 border-surface-container-highest focus:ring-0 focus:border-primary py-4 text-2xl font-headline font-bold text-on-surface transition-all placeholder:text-surface-container-highest" id="retirement-age" name="retirement-age" placeholder="e.g. 45" type="number"/>
+<div class="absolute right-0 bottom-4 text-on-surface-variant font-medium">Years Old</div>
+</div>
+<p id="retire-age-error" class="hidden text-xs text-red-500 mt-1">Please enter a valid retirement age greater than your current age.</p>
+<p class="mt-2 text-xs text-on-surface-variant/70 italic">Most early retirees aim for 40-50.</p>
+</div>
+<!-- Monthly Expenses Field -->
+<div class="group">
+<label class="block text-sm font-semibold text-on-surface-variant mb-2 transition-colors group-focus-within:text-primary" for="monthly-expenses">
+                                Post-Retirement Monthly Expenses (₹)
+                            </label>
+<div class="relative">
+<span class="absolute left-0 bottom-4 text-2xl font-headline font-bold text-on-surface">₹</span>
+<input class="w-full bg-transparent border-0 border-b-2 border-surface-container-highest focus:ring-0 focus:border-primary py-4 pl-8 text-2xl font-headline font-bold text-on-surface transition-all placeholder:text-surface-container-highest" id="monthly-expenses" name="monthly-expenses" placeholder="50,000" type="number"/>
+</div>
+<p id="post-exp-error" class="hidden text-xs text-red-500 mt-1">Please enter your expected monthly expenses after retirement.</p>
+<p class="mt-2 text-xs text-on-surface-variant/70 italic">Include rent, leisure, and healthcare in today's value.</p>
+</div>
+</div>
+<!-- Layout for Actions -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-4">
+<button class="w-full md:w-auto px-8 py-4 text-secondary font-bold text-sm flex items-center justify-center gap-2 hover:bg-secondary/5 rounded-full transition-all active:scale-95" type="button" onclick="window.location.href='/app/fire_wizard.html'">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                            Back
+                        </button>
+<button class="w-full md:w-auto signature-gradient text-on-primary px-12 py-4 rounded-full font-bold text-base shadow-lg shadow-primary/20 flex items-center justify-center gap-2 hover:opacity-90 transition-all active:scale-95" type="button" onclick="saveStep3()">
+                            Continue
+                            <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Bento Hint Grid -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low p-6 rounded-xl flex gap-4 items-start">
+<div class="bg-primary/10 p-2 rounded-lg text-primary">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<h4 class="font-bold text-primary text-sm mb-1">The 25x Rule</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Typically, you'll need 25 times your annual expenses to safely retire early. We'll calculate your exact number next.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex gap-4 items-start">
+<div class="bg-secondary/10 p-2 rounded-lg text-secondary">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<h4 class="font-bold text-secondary text-sm mb-1">Inflation Adjuster</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">Don't worry about future prices; Concierge's AI Mentor adjusts your ₹ values for expected inflation automatically.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Shell -->
+<footer class="w-full py-12 px-6 mt-auto bg-slate-50 border-t border-slate-200">
+<div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 max-w-7xl mx-auto">
+<div class="text-slate-400 font-bold text-xs">© 2024 Modern Concierge Finance</div>
+<div class="flex space-x-6">
+<a class="text-slate-500 hover:text-teal-600 text-xs transition-colors" href="#">Privacy</a>
+<a class="text-slate-500 hover:text-teal-600 text-xs transition-colors" href="#">Terms</a>
+<a class="text-slate-500 hover:text-teal-600 text-xs transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  const data = JSON.parse(localStorage.getItem('fireData') || '{}');
+  if (data.fire_target_age) document.getElementById('retirement-age').value = data.fire_target_age;
+  if (data.monthly_expenses_post_fire) document.getElementById('monthly-expenses').value = data.monthly_expenses_post_fire;
+});
+function saveStep3() {
+  const retireAge = parseInt(document.getElementById('retirement-age').value);
+  const postExpenses = parseFloat(document.getElementById('monthly-expenses').value);
+  const currentAge = JSON.parse(localStorage.getItem('fireData') || '{}').age || 0;
+  let valid = true;
+
+  const ageErr = document.getElementById('retire-age-error');
+  const expErr = document.getElementById('post-exp-error');
+  ageErr.classList.add('hidden');
+  expErr.classList.add('hidden');
+
+  if (!retireAge || retireAge <= currentAge || retireAge > 80) {
+    ageErr.classList.remove('hidden');
+    valid = false;
+  }
+  if (!postExpenses || postExpenses <= 0) {
+    expErr.classList.remove('hidden');
+    valid = false;
+  }
+  if (!valid) return;
+
+  const data = JSON.parse(localStorage.getItem('fireData') || '{}');
+  data.fire_target_age = retireAge;
+  data.monthly_expenses_post_fire = postExpenses;
+  localStorage.setItem('fireData', JSON.stringify(data));
+  window.location.href = '/app/fourthstep.html';
+}
+</script>
+</body></html>

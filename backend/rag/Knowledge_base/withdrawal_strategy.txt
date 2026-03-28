@@ -1,0 +1,15 @@
+FIRE Withdrawal Strategy
+
+Safe Withdrawal Rate:
+- 3% to 3.5% annually
+
+Example:
+Corpus = ₹2 crore
+Annual withdrawal = ₹6–7 lakh
+
+Goal:
+Ensure money lasts for lifetime without depletion
+
+Tips:
+- Adjust withdrawals for inflation
+- Avoid withdrawing during market crashes

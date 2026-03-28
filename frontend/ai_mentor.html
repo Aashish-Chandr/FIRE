@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Mentor | Concierge</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#00342b",
+              "on-secondary-fixed": "#000767",
+              "error-container": "#ffdad6",
+              "secondary-container": "#959efd",
+              "primary-fixed-dim": "#94d3c1",
+              "on-primary-fixed": "#00201a",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed-variant": "#6d382a",
+              "surface": "#f7f9fc",
+              "surface-container": "#eceef1",
+              "secondary-fixed": "#e0e0ff",
+              "surface-container-lowest": "#ffffff",
+              "surface-dim": "#d8dadd",
+              "surface-container-highest": "#e0e3e6",
+              "on-primary-fixed-variant": "#065043",
+              "on-tertiary-container": "#e89f8c",
+              "on-secondary-fixed-variant": "#343d96",
+              "tertiary-fixed": "#ffdbd1",
+              "primary-container": "#004d40",
+              "outline": "#707975",
+              "on-secondary": "#ffffff",
+              "secondary": "#4c56af",
+              "surface-container-high": "#e6e8eb",
+              "on-tertiary": "#ffffff",
+              "on-background": "#191c1e",
+              "tertiary-container": "#693527",
+              "surface-container-low": "#f2f4f7",
+              "primary-fixed": "#afefdd",
+              "on-secondary-container": "#27308a",
+              "tertiary": "#4e2013",
+              "background": "#f7f9fc",
+              "surface-bright": "#f7f9fc",
+              "error": "#ba1a1a",
+              "on-surface": "#191c1e",
+              "inverse-surface": "#2d3133",
+              "on-primary-container": "#7ebdac",
+              "outline-variant": "#bfc9c4",
+              "surface-variant": "#e0e3e6",
+              "on-primary": "#ffffff",
+              "surface-tint": "#29695b",
+              "inverse-on-surface": "#eff1f4",
+              "tertiary-fixed-dim": "#ffb5a1",
+              "on-tertiary-fixed": "#370e04",
+              "on-surface-variant": "#3f4945",
+              "inverse-primary": "#94d3c1",
+              "secondary-fixed-dim": "#bdc2ff"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-container {
+            height: calc(100vh - 160px);
+        }
+        @media (min-width: 768px) {
+            .chat-container {
+                height: calc(100vh - 120px);
+            }
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed-dim selection:text-primary">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md font-['Manrope'] antialiased fixed top-0 w-full z-50 shadow-sm">
+<div class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="text-xl font-bold tracking-tight text-teal-950 dark:text-teal-100">Concierge</span>
+</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-slate-500 dark:text-slate-400 hover:opacity-80 transition-opacity" href="/app/fire_plan.html">Dashboard</a>
+<a class="text-teal-900 dark:text-teal-100 font-semibold hover:opacity-80 transition-opacity" href="/app/ai_mentor.html">AI Mentor</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-teal-900 dark:text-teal-500 active:scale-95 duration-200" data-icon="account_circle" onclick="window.location.href='/app/profile_page.html'">account_circle</button>
+</div>
+</div>
+<div class="bg-slate-100 dark:bg-slate-800 h-[1px] w-full absolute bottom-0"></div>
+</header>
+<div class="flex pt-16 h-screen">
+<!-- SideNavBar (Web Only) -->
+<aside class="hidden md:flex flex-col p-4 space-y-2 h-full w-64 border-r border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 font-['Manrope'] text-sm font-medium">
+<div class="px-4 py-6">
+<h1 class="text-lg font-black text-teal-900 dark:text-teal-100">The Modern Concierge</h1>
+<p class="text-xs text-slate-500">Your Wealth Partner</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:translate-x-1 transition-transform duration-150 ease-in-out" href="/app/fire_plan.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-slate-900 text-teal-900 dark:text-teal-100 rounded-xl shadow-sm hover:translate-x-1 transition-transform duration-150 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span>AI Mentor</span>
+</a>
+</nav>
+<div class="mt-auto p-4">
+<button class="w-full py-3 px-4 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full font-bold shadow-lg active:scale-95 transition-transform" onclick="startOver()">
+                    New Analysis
+                </button>
+</div>
+</aside>
+<!-- Main Content Area (Chat Canvas) -->
+<main class="flex-1 relative flex flex-col bg-surface overflow-hidden">
+<!-- Chat Header/Editorial Banner -->
+
+<div class="px-6 py-8 md:px-12 bg-surface-container-low border-b border-outline-variant/10">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-3xl md:text-4xl font-headline font-extrabold text-primary tracking-tight">AI Financial Mentor</h2>
+<p class="text-on-surface-variant mt-2 max-w-xl">Get real-time insights on your portfolio, tax optimization, and wealth strategy with Banyan's expert concierge.</p>
+</div>
+</div>
+
+<!-- Messages Canvas -->
+<div class="flex-1 overflow-y-auto p-6 md:p-12 scrollbar-hide chat-container">
+<div id="chat-messages" class="max-w-4xl mx-auto space-y-8">
+<!-- Date Separator -->
+<div class="flex justify-center">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-[10px] font-label font-bold uppercase tracking-widest text-on-surface-variant">Today</span>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-6 md:p-8 bg-surface border-t border-outline-variant/10">
+<div class="max-w-4xl mx-auto flex items-center gap-4">
+<button class="material-symbols-outlined p-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors" data-icon="add_circle">add_circle</button>
+<div class="flex-1 relative">
+<input id="chat-input" class="w-full bg-surface-container-lowest border-none focus:ring-0 text-sm py-4 px-6 rounded-full shadow-inner placeholder:text-outline-variant" placeholder="Ask about your wealth strategy..." type="text"/>
+<button id="send-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-on-primary p-2.5 rounded-full hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-xl" data-icon="send">send</span>
+</button>
+</div>
+<button id="mic-btn" class="material-symbols-outlined p-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors" data-icon="mic">mic</button>
+</div>
+</div>
+</main>
+</div>
+<!-- Floating Chat Bubble (Mobile Access) -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-16 h-16 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-full shadow-2xl flex items-center justify-center z-50 active:scale-90 transition-transform md:hidden">
+<span class="material-symbols-outlined text-3xl" data-icon="chat">chat</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-t-3xl shadow-[0_-4px_12px_rgba(0,0,0,0.05)] border-t border-slate-200/50 dark:border-slate-800/50">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-6 py-2 active:bg-slate-100 dark:active:bg-slate-800 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-['Inter'] uppercase tracking-wider mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-teal-50 dark:bg-teal-900/30 text-teal-900 dark:text-teal-100 rounded-2xl px-6 py-2 transition-all scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="text-[10px] font-['Inter'] uppercase tracking-wider mt-1">AI Mentor</span>
+</a>
+</nav>
+<!-- Footer (Suppressed on Chat Page as per Contextual Rules, but included for structure if needed in other views) -->
+<footer class="hidden w-full py-12 px-6 mt-auto bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 font-['Inter'] text-xs">
+<div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 max-w-7xl mx-auto">
+<span class="text-slate-400 font-bold">© 2024 Modern Concierge Finance</span>
+<div class="flex space-x-6 text-slate-500">
+<a class="hover:text-teal-600 transition-colors" href="#">Privacy</a>
+<a class="hover:text-teal-600 transition-colors" href="#">Terms</a>
+<a class="hover:text-teal-600 transition-colors" href="#">Support</a>
+</div>
+</div>
+</footer>
+<script>
+const API_BASE_URL = "http://localhost:8000";
+let sessionId = sessionStorage.getItem('chatSessionId') || null;
+
+function startOver() {
+  localStorage.removeItem('fireData');
+  localStorage.removeItem('fireUserId');
+  localStorage.removeItem('firePlanId');
+  sessionStorage.removeItem('chatSessionId');
+  sessionStorage.removeItem('chatHistory');
+  sessionStorage.removeItem('wizardPreserveSteps2to4');
+  window.location.href = '/';
+}
+const fireData = JSON.parse(localStorage.getItem('fireData') || '{}');
+function normalizeLanguage(lang) {
+  const s = String(lang || 'english').toLowerCase();
+  return ['english', 'hindi', 'hinglish'].includes(s) ? s : 'english';
+}
+const language = normalizeLanguage(fireData.language);
+let userId = localStorage.getItem('fireUserId');
+if (!userId) {
+  userId = 'user_' + Math.random().toString(36).substr(2, 9);
+  localStorage.setItem('fireUserId', userId);
+}
+const planId = localStorage.getItem('firePlanId') || null;
+
+const messagesEl = document.getElementById('chat-messages');
+const inputEl = document.getElementById('chat-input');
+const sendBtn = document.getElementById('send-btn');
+
+// Restore chat history from sessionStorage
+function restoreHistory() {
+  const history = JSON.parse(sessionStorage.getItem('chatHistory') || '[]');
+  history.forEach(m => appendMessage(m.text, m.sender, false));
+}
+
+function saveHistory(text, sender) {
+  const history = JSON.parse(sessionStorage.getItem('chatHistory') || '[]');
+  history.push({ text, sender });
+  sessionStorage.setItem('chatHistory', JSON.stringify(history));
+}
+
+function appendMessage(text, sender, persist = true) {
+  const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  const div = document.createElement('div');
+  if (sender === 'user') {
+    div.className = 'flex items-start justify-end gap-4 ml-auto max-w-[85%] md:max-w-[70%]';
+    div.innerHTML = `<div class="space-y-1 text-right">
+      <div class="bg-secondary-container text-on-secondary-container p-4 rounded-xl rounded-tr-none shadow-sm text-left">
+        <p class="text-sm leading-relaxed">${text}</p>
+      </div>
+      <span class="text-[10px] text-on-surface-variant/60 mr-1">${time}</span>
+    </div>`;
+  } else {
+    div.className = 'flex items-start gap-4 max-w-[85%] md:max-w-[70%]';
+    div.innerHTML = `<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+      <span class="material-symbols-outlined text-on-primary-container text-xl">smart_toy</span>
+    </div>
+    <div class="space-y-1">
+      <div class="bg-surface-container-high text-on-surface p-4 rounded-xl rounded-tl-none shadow-sm">
+        <p class="text-sm leading-relaxed">${text.replace(/\n/g, '<br>')}</p>
+      </div>
+      <span class="text-[10px] text-on-surface-variant/60 ml-1">${time}</span>
+    </div>`;
+  }
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+  if (persist) saveHistory(text, sender);
+}
+
+function showTyping() {
+  const existing = document.getElementById('typing-indicator');
+  if (existing) return;
+  const div = document.createElement('div');
+  div.id = 'typing-indicator';
+  div.className = 'flex items-start gap-4';
+  div.innerHTML = `<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center shrink-0">
+    <span class="material-symbols-outlined text-on-primary-container text-xl">smart_toy</span>
+  </div>
+  <div class="bg-surface-container-lowest px-4 py-3 rounded-xl rounded-tl-none shadow-sm flex space-x-1.5 items-center">
+    <div class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-bounce" style="animation-delay:0ms"></div>
+    <div class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-bounce" style="animation-delay:150ms"></div>
+    <div class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-bounce" style="animation-delay:300ms"></div>
+  </div>`;
+  messagesEl.appendChild(div);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+}
+
+async function startSession() {
+  if (sessionId) {
+    restoreHistory();
+    return;
+  }
+
+  const fd = JSON.parse(localStorage.getItem('fireData') || '{}');
+  let fireSummary = '';
+  if (fd.name) {
+    fireSummary = `Name: ${fd.name}, Age: ${fd.age}, Monthly Income: ₹${Number(fd.monthly_income).toLocaleString('en-IN')}, Monthly Expenses: ₹${Number(fd.monthly_expenses).toLocaleString('en-IN')}, Current Savings: ₹${Number(fd.current_savings).toLocaleString('en-IN')}, Existing Investments: ₹${Number(fd.existing_investments).toLocaleString('en-IN')}, Target FIRE Age: ${fd.fire_target_age}, Post-Retirement Monthly Expenses: ₹${Number(fd.monthly_expenses_post_fire).toLocaleString('en-IN')}, Risk Profile: ${fd.risk_profile}`;
+  }
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/chat/start`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ user_id: userId, language: language, plan_id: planId, fire_summary: fireSummary })
+    });
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    const d = await res.json();
+    sessionId = d.session_id;
+    sessionStorage.setItem('chatSessionId', sessionId);
+    const name = fd.name ? fd.name.split(' ')[0] : '';
+    appendMessage(`Namaste${name ? ' ' + name : ''}! I have your FIRE plan details. Ask me anything about your SIP strategy, tax optimization, asset allocation, or retirement goals.`, 'ai');
+  } catch (e) {
+    appendMessage("Couldn't connect to the backend. Make sure the server is running on http://localhost:8000", 'ai');
+    console.error('Chat start error:', e);
+  }
+}
+
+async function sendMessage() {
+  const msg = inputEl.value.trim();
+  if (!msg) return;
+  if (!sessionId) {
+    await startSession();
+    if (!sessionId) return;
+  }
+  inputEl.value = '';
+  sendBtn.disabled = true;
+  appendMessage(msg, 'user');
+  showTyping();
+  try {
+    const res = await fetch(`${API_BASE_URL}/chat/message`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId, user_id: userId, message: msg, language: language })
+    });
+    if (!res.ok) throw new Error('Server error ' + res.status);
+    const d = await res.json();
+    document.getElementById('typing-indicator')?.remove();
+    appendMessage(d.reply || "Sorry, I couldn't process that.", 'ai');
+  } catch (e) {
+    document.getElementById('typing-indicator')?.remove();
+    appendMessage("I'm having trouble connecting right now. Please try again.", 'ai');
+    console.error('Chat message error:', e);
+  } finally {
+    sendBtn.disabled = false;
+    inputEl.focus();
+  }
+}
+
+sendBtn.addEventListener('click', sendMessage);
+inputEl.addEventListener('keypress', e => { if (e.key === 'Enter') sendMessage(); });
+
+// --- SPEECH TO TEXT ---
+const micBtn = document.getElementById('mic-btn');
+let recognition = null;
+let isListening = false;
+
+if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.continuous = true;      // keep listening until manually stopped
+  recognition.interimResults = true;  // show words as you speak
+  recognition.lang = 'en-IN';
+
+  let finalTranscript = '';
+
+  recognition.onstart = () => {
+    isListening = true;
+    finalTranscript = '';
+    micBtn.classList.add('text-red-500', 'animate-pulse');
+    micBtn.classList.remove('text-on-surface-variant');
+    micBtn.textContent = 'mic_off';
+    inputEl.placeholder = 'Listening... click mic again to send';
+    inputEl.value = '';
+  };
+
+  recognition.onresult = (e) => {
+    let interim = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      if (e.results[i].isFinal) {
+        finalTranscript += e.results[i][0].transcript + ' ';
+      } else {
+        interim += e.results[i][0].transcript;
+      }
+    }
+    inputEl.value = (finalTranscript + interim).trim();
+  };
+
+  recognition.onend = () => {
+    // If still supposed to be listening (e.g. browser auto-stopped), restart
+    if (isListening) {
+      try { recognition.start(); } catch(e) {}
+    }
+  };
+
+  recognition.onerror = (e) => {
+    if (e.error === 'no-speech') return; // ignore silence
+    if (e.error === 'aborted') return;   // ignore manual stop
+    isListening = false;
+    micBtn.classList.remove('text-red-500', 'animate-pulse');
+    micBtn.classList.add('text-on-surface-variant');
+    micBtn.textContent = 'mic';
+    inputEl.placeholder = 'Ask about your wealth strategy...';
+    if (e.error === 'network') {
+      console.warn('Speech API: open via http://localhost:8000');
+    } else {
+      appendMessage('Mic error: ' + e.error + '. Please allow microphone access.', 'ai');
+    }
+  };
+
+  micBtn.addEventListener('click', () => {
+    if (isListening) {
+      // Stop and send
+      isListening = false;
+      recognition.stop();
+      micBtn.classList.remove('text-red-500', 'animate-pulse');
+      micBtn.classList.add('text-on-surface-variant');
+      micBtn.textContent = 'mic';
+      inputEl.placeholder = 'Ask about your wealth strategy...';
+      if (inputEl.value.trim()) sendMessage();
+    } else {
+      recognition.start();
+    }
+  });
+} else {
+  micBtn.title = 'Speech recognition not supported. Use Chrome or Edge.';
+  micBtn.style.opacity = '0.4';
+  micBtn.style.cursor = 'not-allowed';
+}
+window.addEventListener('DOMContentLoaded', startSession);
+</script>
+</body></html>

@@ -1,0 +1,27 @@
+# Environment & secrets
+.env
+*.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+
+# FAISS index (large binary, rebuild with ingest.py)
+backend/faiss_index/
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

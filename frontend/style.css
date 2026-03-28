@@ -1,0 +1,151 @@
+/* 
+   CONCIERGE DESIGN SYSTEM 
+   Modern, Premium, Trustworthy Fintech
+*/
+
+:root {
+    /* Colors */
+    --forest-green: #004D40;
+    --navy-blue: #1A237E;
+    --off-white: #F5F7FA;
+    --pure-white: #FFFFFF;
+    --slate-50: #F8FAFC;
+    --slate-100: #F1F5F9;
+    --slate-200: #E2E8F0;
+    --slate-400: #94A3B8;
+    --slate-500: #64748B;
+    --slate-600: #475569;
+    --slate-800: #1E293B;
+    --slate-900: #0F172A;
+
+    /* Fonts */
+    --font-manrope: 'Manrope', sans-serif;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    color: var(--slate-800);
+    line-height: 1.5;
+}
+
+.bg-forest-green { background-color: var(--forest-green); }
+.bg-navy-blue { background-color: var(--navy-blue); }
+.bg-off-white { background-color: var(--off-white); }
+.text-forest-green { color: var(--forest-green); }
+.text-navy-blue { color: var(--navy-blue); }
+
+/* Typography */
+.font-manrope { font-family: var(--font-manrope); }
+
+/* Wizard Styles */
+.wizard-card {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.wizard-step {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Custom Select Styling */
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z' fill='%2364748B'/%3E%3C/svg%3E");
+    background-position: right 1rem center;
+}
+
+/* Dashboard Styles */
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+/* Chat Widget Styles */
+#chat-window.show {
+    display: flex;
+    transform: scale(1);
+    opacity: 1;
+}
+
+#chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background-color: var(--slate-200);
+    border-radius: 10px;
+}
+
+.message-ai {
+    align-self: flex-start;
+}
+
+.message-user {
+    align-self: flex-end;
+    background-color: var(--forest-green);
+    color: white;
+    padding: 0.75rem;
+    border-radius: 1rem 1rem 0 1rem;
+    max-width: 85%;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.typing-indicator {
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem 1rem 1rem 0;
+    font-size: 0.75rem;
+    color: var(--slate-400);
+    font-style: italic;
+    width: fit-content;
+}
+
+/* Spinner */
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Responsive Overrides */
+@media (max-width: 640px) {
+    .wizard-card {
+        border-radius: 0;
+        min-height: 100vh;
+        margin: -2rem -1rem;
+        box-shadow: none;
+    }
+    
+    .main-content {
+        padding-top: 0;
+    }
+
+    #chat-window {
+        width: 100vw;
+        height: 100vh;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+    }
+}
