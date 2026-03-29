@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: fire-planner
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: ALPHA_VANTAGE_KEY
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ENCRYPTION_KEY
+        sync: false
+      - key: ENVIRONMENT
+        value: production
+      - key: ALLOWED_ORIGINS
+        sync: false

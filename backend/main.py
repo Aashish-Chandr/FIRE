@@ -63,8 +63,12 @@ async def limit_body_size(request: Request, call_next):
 # ── In-memory session → fire_summary store ─────────────────
 _session_summaries: dict = {}
 
-# ── Static frontend ────────────────────────────────────────
-FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "..", "frontend")
+# ── Static frontend — works both locally and on Render ─────
+_BASE = os.path.dirname(__file__)
+FRONTEND_DIR = os.path.join(_BASE, "..", "frontend")
+if not os.path.isdir(FRONTEND_DIR):
+    # On Render the repo root is /app, frontend is at /app/frontend
+    FRONTEND_DIR = os.path.join(_BASE, "frontend")
 app.mount("/static", StaticFiles(directory=FRONTEND_DIR), name="static")
 
 
