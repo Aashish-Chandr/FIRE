@@ -1,11 +1,18 @@
 # Generates a personalized FIRE roadmap using Gemini + RAG + calculator outputs
 from langchain_core.prompts import PromptTemplate
 from rag.retriever import retrieve_relevant_context
-from deepseek_client import make_chat_llm
 from market_data import get_market_context
 import cache
 
-llm = make_chat_llm(temperature=1.0)
+# Lazy LLM — initialized on first use, not at import time
+_llm = None
+
+def _get_llm():
+    global _llm
+    if _llm is None:
+        from deepseek_client import make_chat_llm
+        _llm = make_chat_llm(temperature=1.0)
+    return _llm
 
 
 def _fallback_roadmap(calc_results: dict, user_data) -> str:
@@ -123,7 +130,13 @@ Use ₹ symbol. Be India-specific. Be practical and actionable.
 )
 
 
-fire_chain = FIRE_PROMPT | llm
+fire_chain = None
+
+def _get_fire_chain():
+    global fire_chain
+    if fire_chain is None:
+        fire_chain = FIRE_PROMPT | _get_llm()
+    return fire_chain
 
 
 def get_ai_roadmap(user_data, calc_results):
@@ -180,7 +193,7 @@ Warnings: {", ".join(calc_results['warnings'])}
     )
 
     try:
-        response = fire_chain.invoke({
+        response = _get_fire_chain().invoke({
             "language_instruction": language_instruction,
             "context": context,
             "market_data": market_data,

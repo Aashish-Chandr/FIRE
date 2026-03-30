@@ -1,11 +1,18 @@
 # Handles chat with memory + RAG + AI
 from langchain_core.prompts import PromptTemplate
 from rag.retriever import retrieve_relevant_context
-from deepseek_client import make_chat_llm
 from market_data import get_market_context
 import cache
 
-llm = make_chat_llm(temperature=1.0)
+# Lazy LLM — initialized on first use, not at import time
+_llm = None
+
+def _get_llm():
+    global _llm
+    if _llm is None:
+        from deepseek_client import make_chat_llm
+        _llm = make_chat_llm(temperature=1.0)
+    return _llm
 
 LANGUAGE_INSTRUCTIONS = {
     "english":  "Respond ONLY in English.",
@@ -45,7 +52,13 @@ LANGUAGE RULE: {language_instruction}
 """,
 )
 
-chat_chain = CHAT_PROMPT | llm
+_chat_chain = None
+
+def _get_chat_chain():
+    global _chat_chain
+    if _chat_chain is None:
+        _chat_chain = CHAT_PROMPT | _get_llm()
+    return _chat_chain
 
 
 def format_history(messages: list) -> str:
@@ -141,7 +154,7 @@ def get_chat_response(user_message: str, chat_history: list,
     fire_summary = fire_summary or "User has not created a FIRE plan yet."
 
     try:
-        response = chat_chain.invoke({
+        response = _get_chat_chain().invoke({
             "language_instruction": language_instruction,
             "context": context,
             "market_data": market_data,
