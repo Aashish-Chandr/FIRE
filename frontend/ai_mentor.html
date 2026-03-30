@@ -191,7 +191,9 @@
 </div>
 </footer>
 <script>
-const API_BASE_URL = "http://localhost:8000";
+const API_BASE_URL = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
+  ? "http://localhost:8000"
+  : window.location.origin;
 let sessionId = sessionStorage.getItem('chatSessionId') || null;
 
 function startOver() {
@@ -303,7 +305,7 @@ async function startSession() {
     const name = fd.name ? fd.name.split(' ')[0] : '';
     appendMessage(`Namaste${name ? ' ' + name : ''}! I have your FIRE plan details. Ask me anything about your SIP strategy, tax optimization, asset allocation, or retirement goals.`, 'ai');
   } catch (e) {
-    appendMessage("Couldn't connect to the backend. Make sure the server is running on http://localhost:8000", 'ai');
+    appendMessage("Couldn't connect to the backend. Make sure the server is running on " + API_BASE_URL, 'ai');
     console.error('Chat start error:', e);
   }
 }
