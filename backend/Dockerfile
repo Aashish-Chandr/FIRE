@@ -2,28 +2,33 @@ FROM python:3.10-slim
 
 WORKDIR /app
 
-# System deps for faiss-cpu and sentence-transformers
-RUN apt-get update && apt-get install -y \
+# Minimal system deps
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    git \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy and install Python dependencies first (layer cache)
+# Install CPU-only torch first (tiny version, no CUDA = ~800MB saved)
+RUN pip install --no-cache-dir \
+    torch==2.1.0+cpu \
+    --index-url https://download.pytorch.org/whl/cpu
+
+# Install remaining deps
 COPY backend/requirements.txt ./requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend code
+# Copy source
 COPY backend/ ./backend/
-
-# Copy frontend code
 COPY frontend/ ./frontend/
 
-# Set working directory to backend for uvicorn
 WORKDIR /app/backend
 
-# Build FAISS index from knowledge base texts
+# Build FAISS index
 RUN python rag/ingest.py
 
-EXPOSE 8000
+# Clean up caches to shrink image
+RUN pip cache purge && \
+    find /usr -name "*.pyc" -delete && \
+    find /usr -name "__pycache__" -type d -exec rm -rf {} + 2>/dev/null || true
 
+EXPOSE 8000
 CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000}"]
